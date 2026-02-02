@@ -170,3 +170,43 @@ Configure OpenRouter API key
 ## License
 
 MIT License — see the LICENSE file for details.
+
+---
+
+## Quick Demo (what you'll see)
+
+- Explain screen: upload an image, choose an explanation mode (e.g. beginner/quick/exam), and pick a reasoning model. The Explain button runs the two-step pipeline and navigates to Result.
+- Result screen: you will first see "Understanding image..." while the vision model extracts structured text, then "Generating explanation..." while the reasoning model constructs the explanation. The final explanation is presented in readable paragraphs.
+- Follow-ups: type a question on the Result screen. The app will reuse the extracted image context and the prior explanation to provide focused answers.
+
+## Example: From image to explanation (walkthrough)
+
+1. Upload a circuit diagram image.
+2. The vision model returns structured text such as: "Full-wave bridge rectifier; four diodes; AC input; DC output; smoothing capacitor present".
+3. The reasoning model receives that vision text along with subject and mode and returns a student-friendly explanation broken into steps (what it does, how it works, and why each component matters).
+
+## Good prompt examples (for reproducibility)
+
+- Vision prompt: keep it strict and factual — request only observable elements.
+- Reasoning prompt: include `visionText`, `subject`, and `mode` and ask explicitly for plain text with numbered steps.
+
+## Security and privacy notes
+
+- API keys are stored locally in `localStorage` (Settings). This app does not send keys to any server other than the provider (`openrouter.ai`).
+- Uploaded images are processed from the client in the browser and are not stored on our servers. Session data (visionText, explanationText, followUpAnswers) is stored in `sessionStorage` during the browsing session.
+
+## Contributing
+
+Contributions are welcome. If you plan to contribute:
+
+1. Fork the repository and create a feature branch.
+2. Keep changes focused and submit a clear PR describing the goal and the testing steps.
+3. Run the development server and verify changes locally before opening a PR.
+
+## Contact
+
+If you find issues or want to request features, open an issue in the repo with clear reproduction steps and expected behavior.
+
+---
+
+_This README is written to help students and developers quickly understand how Visual Explain AI works and how to run and extend it._
